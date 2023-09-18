@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(AppBases());
-}
+class RowsColumnsContainers extends StatelessWidget {
+  const RowsColumnsContainers({super.key});
 
-class AppBases extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: createScaffold());
+    return createScaffold();
   }
 }
 
@@ -17,7 +15,7 @@ createScaffold() {
       title: const Text("Aplicación 2023 2"),
     ),
     body: Container(
-      margin: EdgeInsets.all(50),
+      margin: const EdgeInsets.all(50),
       decoration: BoxDecoration(
         color: Colors.amber,
         border: Border.all(
@@ -35,7 +33,7 @@ Column createColum() {
     children: [
       createRow(),
       createRow(),
-      Text("...."),
+      const Text("...."),
       Image.network(
           "https://cdn.pixabay.com/photo/2023/08/08/17/20/yosemite-8177850_1280.jpg"),
     ],

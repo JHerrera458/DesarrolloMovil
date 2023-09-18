@@ -1,6 +1,9 @@
 import 'package:apptareas20232/agenda/main.dart';
+import 'package:apptareas20232/bases/IconsTextsImages.dart';
+import 'package:apptareas20232/bases/rowsColumnsContainers.dart';
 import 'package:apptareas20232/ejemplo_listas_v1/views/detailZone.dart';
 import 'package:apptareas20232/ejemplo_listas_v1/views/listZones.dart';
+import 'package:apptareas20232/listas_v2/listasv2.dart';
 import 'package:apptareas20232/styles.dart';
 import 'package:flutter/material.dart';
 
@@ -14,8 +17,11 @@ class AppBases extends StatelessWidget {
     return MaterialApp(
       home: createScaffold(),
       routes: {
-        "home": (context) => ListZones(),
-        "detailPlace": (context) => DetailZone(),
+        "places": (context) => ListZones(),
+        "agenda": (context) => AgendaMain(),
+        "bases1": (context) => IconsTextsImages(),
+        "bases2": (context) => RowsColumnsContainers(),
+        "musica": (context) => ListaV2(),
       },
     );
   }
@@ -23,8 +29,11 @@ class AppBases extends StatelessWidget {
 
 createScaffold() {
   List examples = [
-    {"name": "Lista de lugares"},
-    {"name": "Agenda de contactos"}
+    {"name": "Lista de lugares", "route": "places"},
+    {"name": "Agenda de contactos", "route": "agenda"},
+    {"name": "Bases 1", "route": "bases1"},
+    {"name": "Bases 2, rows, columns y containers", "route": "bases2"},
+    {"name": "Lista musicial", "route": "musica"}
   ];
 
   return Scaffold(
@@ -36,11 +45,7 @@ createScaffold() {
         return ListTile(
           title: Text(examples[index]["name"]),
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AgendaMain(),
-                ));
+            routing(context, examples[index]["route"]);
           },
         );
       },
@@ -50,4 +55,14 @@ createScaffold() {
       ),
     ),
   );
+}
+
+void routing(BuildContext context, String route) {
+  // Navigator.push(
+  //   context,
+  //   MaterialPageRoute(
+  //     builder: (context) => AgendaMain(),
+  //   ),
+  // );
+  Navigator.pushNamed(context, route);
 }
